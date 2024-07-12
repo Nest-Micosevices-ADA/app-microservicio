@@ -2,6 +2,9 @@ version: '3'
 
 
 services:
+
+
+
   nats-sever:
     image: nats:latest
     ports:
@@ -10,10 +13,10 @@ services:
   client-gateway:
     build: ./client-gateway
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - ./client-gateway/src:/usr/src/app/src
-    command:  npm run start:dev  
+    command: npm run start:dev  
     environment:
       - PORT=3000
       - NATS_SERVERS=nats://nats-sever:4222
